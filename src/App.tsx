@@ -141,6 +141,7 @@ function AppContent() {
       <MenuGrid
         items={items}
         categoryName={activeCat?.name ?? ''}
+        salsas={categoriaActiva === 'alitas' ? ['B\u00FAfalo', 'BBQ', 'Chipotle', 'Ranch', 'Jalape\u00F1o'] : undefined}
       />
       {tierConfig.showWhatsApp && <WhatsAppButton />}
       {tierConfig.showAdminBanner && <AdminPanelBanner />}

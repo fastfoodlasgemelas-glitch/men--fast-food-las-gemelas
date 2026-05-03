@@ -25,20 +25,6 @@ export default function InfoSection() {
 
         <div className="bg-white dark:bg-brand-card rounded-xl border border-brand-cream-dark dark:border-neutral-800 p-6">
           <h3 className="font-heading text-brand-dark dark:text-white text-lg mb-3 flex items-center gap-2 tracking-wide">
-            {'\uD83E\uDED5'} Salsas para Alitas
-          </h3>
-          <ul className="space-y-2">
-            {['B\u00FAfalo', 'BBQ', 'Chipotle', 'Ranch', 'Jalape\u00F1o'].map((a) => (
-              <li key={a} className="flex items-center gap-2 text-sm text-gray-600 dark:text-brand-gray">
-                <span className="w-2 h-2 rounded-full bg-brand-red" />
-                {a}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="sm:col-span-2 bg-white dark:bg-brand-card rounded-xl border border-brand-cream-dark dark:border-neutral-800 p-6">
-          <h3 className="font-heading text-brand-dark dark:text-white text-lg mb-3 flex items-center gap-2 tracking-wide">
             {'\uD83C\uDF89'} Personalizaciones por Temporada
           </h3>
           <p className="text-sm text-gray-600 dark:text-brand-gray mb-4">

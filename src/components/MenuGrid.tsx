@@ -8,9 +8,10 @@ interface MenuGridProps {
   items: FlatMenuItem[];
   categoryName: string;
   categoryNote?: string;
+  salsas?: string[];
 }
 
-export default function MenuGrid({ items, categoryName, categoryNote }: MenuGridProps) {
+export default function MenuGrid({ items, categoryName, categoryNote, salsas }: MenuGridProps) {
   const { tierConfig } = useTier();
   const [selectedItem, setSelectedItem] = useState<FlatMenuItem | null>(null);
 
@@ -48,6 +49,26 @@ export default function MenuGrid({ items, categoryName, categoryNote }: MenuGrid
                 item={item}
                 onClick={tierConfig.showItemModal ? () => setSelectedItem(item) : undefined}
               />
+            ))}
+          </div>
+        </>
+      )}
+      {salsas && salsas.length > 0 && (
+        <>
+          <div className="mt-8 mb-4 flex items-center gap-3">
+            <div className="flex-1 h-px bg-brand-red/20 dark:bg-neutral-700" />
+            <h3 className="text-xl font-heading tracking-wide text-brand-red dark:text-brand-gold">Salsas</h3>
+            <div className="flex-1 h-px bg-brand-red/20 dark:bg-neutral-700" />
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {salsas.map((s) => (
+              <span
+                key={s}
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-brand-red/10 dark:bg-brand-gold/10 text-sm font-medium text-brand-dark dark:text-brand-gold"
+              >
+                <span className="w-2 h-2 rounded-full bg-brand-red" />
+                {s}
+              </span>
             ))}
           </div>
         </>
