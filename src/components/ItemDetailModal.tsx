@@ -23,7 +23,7 @@ export default function ItemDetailModal({ item, onClose }: ItemDetailModalProps)
         </button>
 
         {item.image ? (
-          <img src={item.image} alt={item.name} className="w-full h-56 object-cover" />
+          <img src={`${import.meta.env.BASE_URL}${item.image.replace(/^\//, '')}`} alt={item.name} className="w-full h-56 object-cover" />
         ) : (
           <div className="w-full h-40 bg-brand-cream-dark/60 dark:bg-neutral-800 flex items-center justify-center">
             <span className="text-sm italic text-gray-400 dark:text-neutral-600">Sin imagen</span>

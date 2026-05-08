@@ -7,10 +7,7 @@ import InfoSection from './components/InfoSection';
 import SocialSection from './components/SocialSection';
 import WhatsAppButton from './components/WhatsAppButton';
 import SearchBar from './components/SearchBar';
-import TierSelectorBar from './components/TierSelectorBar';
-import AdminPanelBanner from './components/AdminPanelBanner';
 import { useTheme } from './hooks/useTheme';
-import { TierProvider, useTier } from './context/TierContext';
 import { categories, menuItems } from './data/menuData';
 import type { FlatMenuItem } from './types/menu';
 
@@ -40,9 +37,8 @@ function flattenAllItems(): FlatMenuItem[] {
   }));
 }
 
-function AppContent() {
+export default function App() {
   const { isDark, toggle } = useTheme();
-  const { tierConfig } = useTier();
   const [categoriaActiva, setCategoriaActiva] = useState(categories[0].id);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -78,9 +74,7 @@ function AppContent() {
           items={resultados}
           categoryName={`Resultados: "${searchQuery}"`}
         />
-        {tierConfig.showWhatsApp && <WhatsAppButton />}
-        {tierConfig.showAdminBanner && <AdminPanelBanner />}
-        <TierSelectorBar />
+        <WhatsAppButton />
         {footer}
       </div>
     );
@@ -98,9 +92,7 @@ function AppContent() {
         />
         <SearchBar query={searchQuery} onChange={setSearchQuery} />
         <InfoSection />
-        {tierConfig.showWhatsApp && <WhatsAppButton />}
-        {tierConfig.showAdminBanner && <AdminPanelBanner />}
-        <TierSelectorBar />
+        <WhatsAppButton />
         {footer}
       </div>
     );
@@ -118,9 +110,7 @@ function AppContent() {
         />
         <SearchBar query={searchQuery} onChange={setSearchQuery} />
         <SocialSection />
-        {tierConfig.showWhatsApp && <WhatsAppButton />}
-        {tierConfig.showAdminBanner && <AdminPanelBanner />}
-        <TierSelectorBar />
+        <WhatsAppButton />
         {footer}
       </div>
     );
@@ -141,20 +131,10 @@ function AppContent() {
       <MenuGrid
         items={items}
         categoryName={activeCat?.name ?? ''}
-        salsas={categoriaActiva === 'alitas' ? ['B\u00FAfalo', 'BBQ', 'Chipotle', 'Ranch', 'Jalape\u00F1o'] : undefined}
+        salsas={categoriaActiva === 'alitas' ? ['Búfalo', 'BBQ', 'Chipotle', 'Ranch', 'Jalapeño'] : undefined}
       />
-      {tierConfig.showWhatsApp && <WhatsAppButton />}
-      {tierConfig.showAdminBanner && <AdminPanelBanner />}
-      <TierSelectorBar />
+      <WhatsAppButton />
       {footer}
     </div>
-  );
-}
-
-export default function App() {
-  return (
-    <TierProvider>
-      <AppContent />
-    </TierProvider>
   );
 }
